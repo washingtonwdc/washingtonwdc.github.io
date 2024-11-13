@@ -2,7 +2,7 @@
 
 ## Sobre Mim
 
-Meu nome é Washington Dias, sou um desenvolvedor Full Stack com experiência em diversas tecnologias e frameworks. Tenho paixão por criar soluções eficientes e inovadoras para problemas complexos.
+Meu nome é Washington Dias, sou um aspirante a desenvolvedor com experiência em diversas tecnologias e frameworks. Tenho paixão por criar soluções eficientes e inovadoras para problemas complexos.
 
 ## Habilidades
 
