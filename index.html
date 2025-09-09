@@ -1101,14 +1101,32 @@
             });
         }, observerOptions);
 
-        // Observar todos os cards
+        // Observar todos os cards e barras de progresso
         document.addEventListener('DOMContentLoaded', function() {
+            // Animar cards
             const cards = document.querySelectorAll('.card, .project-card');
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
                 card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
                 observer.observe(card);
+            });
+            
+            // Animar barras de progresso
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const skillObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressBar = entry.target;
+                        const progress = progressBar.getAttribute('data-progress');
+                        progressBar.style.width = `${progress}%`;
+                        skillObserver.unobserve(progressBar);
+                    }
+                });
+            }, observerOptions);
+            
+            skillBars.forEach(bar => {
+                skillObserver.observe(bar);
             });
         });
     </script>
