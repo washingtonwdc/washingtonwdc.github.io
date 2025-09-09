@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Washington Dias - Desenvolvedor Python especializado em soluções inovadoras e experiências digitais excepcionais">
+    <meta name="keywords" content="Washington Dias, desenvolvedor python, portfolio, desenvolvimento web, data science">
+    <meta name="author" content="Washington Dias">
+    <meta name="robots" content="index, follow">
     <title>Washington Dias - Portfólio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
         :root {
             /* Variáveis de acessibilidade */
@@ -41,7 +45,7 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Inter Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--light-color);
@@ -206,6 +210,13 @@
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        /* Fallback fonts in case Google Fonts fails to load */
+        @font-face {
+            font-family: 'Inter Fallback';
+            src: local('Inter'), local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('system-ui');
+            font-display: swap;
+        }
 
         .container {
             width: 90%;
@@ -1483,28 +1494,40 @@
         
         // Preloader
         window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            setTimeout(function() {
-                preloader.classList.add('fade-out');
-                setTimeout(function() {
-                    preloader.style.display = 'none';
-                }, 500);
-            }, 800);
+            try {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    setTimeout(function() {
+                        preloader.classList.add('fade-out');
+                        setTimeout(function() {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }, 800);
+                }
+            } catch (error) {
+                console.error('Error with preloader:', error);
+            }
         });
         
         // Função para alternar tema
         function toggleTheme() {
-            const body = document.body;
-            const themeToggle = document.querySelector('.theme-toggle');
-            
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                themeToggle.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                themeToggle.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
+            try {
+                const body = document.body;
+                const themeToggle = document.querySelector('.theme-toggle');
+                
+                if (!themeToggle) return;
+                
+                if (body.getAttribute('data-theme') === 'dark') {
+                    body.removeAttribute('data-theme');
+                    themeToggle.textContent = '🌙';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    themeToggle.textContent = '☀️';
+                    localStorage.setItem('theme', 'dark');
+                }
+            } catch (error) {
+                console.error('Error toggling theme:', error);
             }
         }
         
