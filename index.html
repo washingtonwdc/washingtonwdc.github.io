@@ -649,23 +649,84 @@
             box-shadow: var(--shadow-medium);
         }
 
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+        }
+        
+        .hamburger-icon span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--dark-color);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active .hamburger-icon span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        
+        .menu-toggle.active .hamburger-icon span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active .hamburger-icon span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
+                flex-direction: row;
+                justify-content: space-between;
                 padding: 1rem;
-                gap: 1rem;
+                position: relative;
+            }
+            
+            .menu-toggle {
+                display: block;
             }
             
             .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--light-color);
                 flex-direction: column;
-                gap: 1rem;
-                width: 100%;
+                gap: 2rem;
+                padding: 6rem 2rem 2rem;
+                transition: all 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            
+            [data-theme="dark"] .nav-menu {
+                background: #1f2937;
+            }
+            
+            .nav-menu.active {
+                right: 0;
             }
             
             .nav-links {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
                 text-align: center;
+                width: 100%;
             }
             
             .showcase {
@@ -735,12 +796,20 @@
     <header>
         <div class="header-content">
             <a href="#" class="logo">Washington Dias</a>
-            <div class="nav-menu">
+            <button class="menu-toggle" id="menuToggle">
+                <span class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+            <div class="nav-menu" id="navMenu">
                 <ul class="nav-links">
                     <li><a href="#about">Sobre Mim</a></li>
                     <li><a href="#skills">Habilidades</a></li>
                     <li><a href="#courses">Cursos</a></li>
                     <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
                 <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
