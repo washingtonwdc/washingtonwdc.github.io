@@ -333,16 +333,64 @@
             gap: 2rem;
             margin-top: 3rem;
         }
+        
+        .skills-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .skill-item {
+            margin-bottom: 2rem;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin: 0;
+        }
+        
+        .skill-info span {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        [data-theme="dark"] .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
 
         .card {
             background: var(--light-color);
             padding: 2rem;
             border-radius: 20px;
             box-shadow: var(--shadow-light);
-            transition: all 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             border: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .card::before {
